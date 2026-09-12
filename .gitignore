@@ -1,0 +1,34 @@
+# Data files - too big for git
+ml/data/raw/*
+ml/data/processed/*
+!ml/data/raw/.gitkeep
+!ml/data/processed/.gitkeep
+*.csv
+*.parquet
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+.ipynb_checkpoints/
+
+# Node
+node_modules/
+.next/
+out/
+npm-debug.log*
+
+# Env files - never commit secrets
+.env
+.env.local
+*.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
