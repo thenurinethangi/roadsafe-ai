@@ -9,6 +9,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from app.api.routes import router
+from app.errors import register_error_handlers
 from app.services.prediction import prediction_service
 
 
@@ -37,4 +38,5 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+register_error_handlers(app)
 app.include_router(router)
