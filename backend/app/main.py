@@ -1,10 +1,9 @@
 """
 RoadSafe AI - FastAPI entry point.
-
-This is the "model serving" layer from Module 6. It loads the trained
-model once at startup and exposes it over HTTP.
 """
 from fastapi import FastAPI
+
+from app.api.routes import router
 
 app = FastAPI(
     title="RoadSafe AI API",
@@ -12,7 +11,4 @@ app = FastAPI(
     version="0.1.0",
 )
 
-
-@app.get("/api/health")
-def health():
-    return {"status": "ok"}
+app.include_router(router)
