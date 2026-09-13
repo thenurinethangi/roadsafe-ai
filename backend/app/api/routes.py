@@ -1,16 +1,13 @@
 """
 All API endpoints.
-
-Routes stay thin on purpose: take the request, call a service, return the
-response. The real work lives in app/services/, so the prediction service
-is a proper layer rather than logic buried inside a URL handler.
 """
+
 from fastapi import APIRouter
 from sqlalchemy import text
 
-from app.config import settings
 from app.db.session import engine
 from app.models.schemas import HealthResponse
+from app.services.prediction import prediction_service
 
 # prefix="/api" is applied to every route below
 router = APIRouter(prefix="/api")
@@ -29,13 +26,11 @@ def _database_is_reachable() -> bool:
 @router.get("/health", response_model=HealthResponse)
 def health():
 
-    model_file = settings.MODEL_DIR / "model.joblib"
-    hotspot_file = settings.MODEL_DIR / "hotspot_kmeans.joblib"
-
     return HealthResponse(
         status="ok",
-        model_loaded=model_file.exists(),
-        hotspot_model_loaded=hotspot_file.exists(),
+        model_loaded=prediction_service.is_ready,
+        hotspot_model_loaded=prediction_service.hotspot_model is not None,
         database_connected=_database_is_reachable(),
-        model_version=None,
+        model_version=prediction_service.model_version,
+        detail=prediction_service.load_error,
     )

@@ -27,6 +27,10 @@ class HealthResponse(BaseModel):
     database_connected: bool
     model_version: str | None = None
 
+    # Why something is not loaded, so a failure is readable at a glance
+    # instead of needing the server logs.
+    detail: str | None = None
+
 
 # request
 
