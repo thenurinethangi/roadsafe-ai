@@ -10,7 +10,7 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    DATABASE_URL: str = "postgresql://roadsafe:roadsafe@localhost:5432/roadsafe"
+    DATABASE_URL: str = "postgresql://roadsafe:roadsafe@127.0.0.1:5433/roadsafe"
 
     OSRM_BASE_URL: str = "https://router.project-osrm.org"
     WEATHER_BASE_URL: str = "https://api.open-meteo.com/v1/forecast"
