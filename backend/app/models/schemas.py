@@ -13,7 +13,7 @@ without having to read any backend logic.
 from datetime import datetime
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 # health
@@ -84,7 +84,7 @@ class Route(BaseModel):
     """One complete route option."""
 
     route_id: str
-    label: str                      # "Safest" / "Fastest" / "Best Balance"
+    label: str                      # "Safest" / "Fastest" / "Safest and fastest" / "Alternative"
 
     distance_km: float
     duration_minutes: int
@@ -104,3 +104,39 @@ class JourneyResponse(BaseModel):
 
     # True when the weather API worked. False means we fell back to seasonal averages - the app must still work if Open-Meteo is down.
     weather_available: bool = True
+
+
+class HotspotZone(BaseModel):
+    """One k-Means collision zone for the map."""
+
+    model_config = ConfigDict(from_attributes=True)
+
+    cluster_id: int
+    centre_lat: float
+    centre_lon: float
+    radius_km: float
+    total_collisions: int
+    severe_rate: float
+    risk_band: Literal["low", "moderate", "high"]
+
+
+class HourCount(BaseModel):
+    hour: int
+    collisions: int
+
+
+class SeverityShare(BaseModel):
+    label: str
+    collisions: int
+    fatal_pct: float
+    serious_pct: float
+    slight_pct: float
+
+
+class InsightsResponse(BaseModel):
+    """Dashboard chart data, worked out once from the cleaned collisions."""
+
+    total_collisions: int
+    collisions_by_hour: list[HourCount]
+    severity_by_weather: list[SeverityShare]
+    severity_by_road_type: list[SeverityShare]
