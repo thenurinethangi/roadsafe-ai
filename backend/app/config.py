@@ -17,6 +17,9 @@ class Settings(BaseSettings):
 
     MODEL_DIR: Path = Path("../ml/artifacts")
 
+    # The Next.js frontend
+    CORS_ORIGINS: list[str] = ["http://localhost:3000"]
+
     class Config:
         env_file = ".env"
         
