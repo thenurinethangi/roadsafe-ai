@@ -1,0 +1,196 @@
+{
+  "total_collisions": 513698,
+  "collisions_by_hour": [
+    {
+      "hour": 0,
+      "collisions": 8109
+    },
+    {
+      "hour": 1,
+      "collisions": 5608
+    },
+    {
+      "hour": 2,
+      "collisions": 4104
+    },
+    {
+      "hour": 3,
+      "collisions": 3424
+    },
+    {
+      "hour": 4,
+      "collisions": 3137
+    },
+    {
+      "hour": 5,
+      "collisions": 4797
+    },
+    {
+      "hour": 6,
+      "collisions": 9561
+    },
+    {
+      "hour": 7,
+      "collisions": 20608
+    },
+    {
+      "hour": 8,
+      "collisions": 32851
+    },
+    {
+      "hour": 9,
+      "collisions": 22520
+    },
+    {
+      "hour": 10,
+      "collisions": 22555
+    },
+    {
+      "hour": 11,
+      "collisions": 26020
+    },
+    {
+      "hour": 12,
+      "collisions": 29668
+    },
+    {
+      "hour": 13,
+      "collisions": 30812
+    },
+    {
+      "hour": 14,
+      "collisions": 32948
+    },
+    {
+      "hour": 15,
+      "collisions": 42201
+    },
+    {
+      "hour": 16,
+      "collisions": 42888
+    },
+    {
+      "hour": 17,
+      "collisions": 44782
+    },
+    {
+      "hour": 18,
+      "collisions": 35928
+    },
+    {
+      "hour": 19,
+      "collisions": 27838
+    },
+    {
+      "hour": 20,
+      "collisions": 20487
+    },
+    {
+      "hour": 21,
+      "collisions": 16901
+    },
+    {
+      "hour": 22,
+      "collisions": 14648
+    },
+    {
+      "hour": 23,
+      "collisions": 11303
+    }
+  ],
+  "severity_by_weather": [
+    {
+      "label": "Fine no high winds",
+      "collisions": 413563,
+      "fatal_pct": 1.52,
+      "serious_pct": 23.22,
+      "slight_pct": 75.26
+    },
+    {
+      "label": "Raining no high winds",
+      "collisions": 55823,
+      "fatal_pct": 1.4,
+      "serious_pct": 22.61,
+      "slight_pct": 76.0
+    },
+    {
+      "label": "Other",
+      "collisions": 15954,
+      "fatal_pct": 0.75,
+      "serious_pct": 19.07,
+      "slight_pct": 80.17
+    },
+    {
+      "label": "Raining + high winds",
+      "collisions": 5172,
+      "fatal_pct": 2.36,
+      "serious_pct": 24.42,
+      "slight_pct": 73.22
+    },
+    {
+      "label": "Fine + high winds",
+      "collisions": 4468,
+      "fatal_pct": 2.62,
+      "serious_pct": 27.13,
+      "slight_pct": 70.26
+    },
+    {
+      "label": "Fog or mist",
+      "collisions": 2127,
+      "fatal_pct": 2.82,
+      "serious_pct": 25.2,
+      "slight_pct": 71.98
+    },
+    {
+      "label": "Snowing no high winds",
+      "collisions": 1791,
+      "fatal_pct": 1.06,
+      "serious_pct": 21.61,
+      "slight_pct": 77.33
+    },
+    {
+      "label": "Snowing + high winds",
+      "collisions": 234,
+      "fatal_pct": 0.0,
+      "serious_pct": 19.23,
+      "slight_pct": 80.77
+    }
+  ],
+  "severity_by_road_type": [
+    {
+      "label": "Single carriageway",
+      "collisions": 372993,
+      "fatal_pct": 1.53,
+      "serious_pct": 24.41,
+      "slight_pct": 74.06
+    },
+    {
+      "label": "Dual carriageway",
+      "collisions": 76100,
+      "fatal_pct": 2.03,
+      "serious_pct": 20.86,
+      "slight_pct": 77.11
+    },
+    {
+      "label": "Roundabout",
+      "collisions": 31174,
+      "fatal_pct": 0.51,
+      "serious_pct": 16.7,
+      "slight_pct": 82.79
+    },
+    {
+      "label": "One way street",
+      "collisions": 11549,
+      "fatal_pct": 0.36,
+      "serious_pct": 17.39,
+      "slight_pct": 82.26
+    },
+    {
+      "label": "Slip road",
+      "collisions": 8829,
+      "fatal_pct": 1.04,
+      "serious_pct": 16.9,
+      "slight_pct": 82.06
+    }
+  ]
+}
