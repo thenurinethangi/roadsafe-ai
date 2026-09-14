@@ -13,6 +13,7 @@ import joblib
 import pandas as pd
 
 from app.config import settings
+from app.errors import PredictionUnavailable
 
 ML_DIR = settings.MODEL_DIR.parent.resolve()
 if str(ML_DIR) not in sys.path:
@@ -27,6 +28,7 @@ class PredictionService:
         self.feature_columns: list[str] = []
         self.model_version: str | None = None
         self.load_error: str | None = None
+        self.score_reference: list[float] = []
 
     def load(self) -> None:
         """Load the model once at startup, not per request."""
@@ -48,6 +50,11 @@ class PredictionService:
                 metrics = json.load(f)
             self.feature_columns = metrics.get("feature_columns", [])
             self.model_version = metrics.get("chosen_model")
+
+        reference_path = settings.MODEL_DIR / "score_reference.json"
+        if reference_path.exists():
+            with open(reference_path) as f:
+                self.score_reference = json.load(f)["ksi_percentiles"]
 
         self._check_feature_columns()
 
@@ -89,7 +96,7 @@ class PredictionService:
         contains only collisions, so that cannot be calculated.
         """
         if not self.is_ready:
-            raise RuntimeError(f"Prediction service not ready: {self.load_error}")
+            raise PredictionUnavailable(self.load_error)
 
         features = self._build_feature_row(conditions)
 
@@ -103,6 +110,23 @@ class PredictionService:
             int(cls): float(prob)
             for cls, prob in zip(self.model.classes_, probabilities)
         }
+
+    def ksi_contributions(self, conditions: dict) -> dict:
+        """How much each input pushed this segment towards a killed or seriously injured outcome."""
+        if not self.is_ready:
+            raise PredictionUnavailable(self.load_error)
+
+        row = self._build_feature_row(conditions)[self.feature_columns]
+        encoded = self.model[:-1].transform(row)
+        encoded = encoded.toarray()[0] if hasattr(encoded, "toarray") else encoded[0]
+
+        classes = list(self.model[-1].classes_)
+        coef = self.model[-1].coef_
+        slight = coef[classes.index(3)]
+        weights = (coef[classes.index(1)] - slight) + (coef[classes.index(2)] - slight)
+
+        names = self.model[:-1].get_feature_names_out()
+        return {name: float(w * x) for name, w, x in zip(names, weights, encoded) if x != 0}
 
     @staticmethod
     def _example_conditions() -> dict:

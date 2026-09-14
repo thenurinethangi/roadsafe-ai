@@ -10,15 +10,9 @@ SEGMENT_LENGTH_KM = 8
 
 MOTORWAY, A_M, A_ROAD, B_ROAD, UNCLASSIFIED = 1, 2, 3, 4, 6
 
-# OSRM gives no speed limit or carriageway type, so use typical values per
-# road class. STATS19 road_type: 3 = dual carriageway, 6 = single carriageway.
-ROAD_DEFAULTS = {
-    MOTORWAY: {"road_type": 3, "speed_limit": 70},
-    A_M: {"road_type": 3, "speed_limit": 70},
-    A_ROAD: {"road_type": 6, "speed_limit": 60},
-    B_ROAD: {"road_type": 6, "speed_limit": 60},
-    UNCLASSIFIED: {"road_type": 6, "speed_limit": 30},
-}
+# OSRM gives no carriageway type, so use the usual one per road class.
+# STATS19 road_type: 3 = dual carriageway, 6 = single carriageway.
+ROAD_TYPE_BY_CLASS = {MOTORWAY: 3, A_M: 3, A_ROAD: 6, B_ROAD: 6, UNCLASSIFIED: 6}
 
 
 def distance_km(lat1, lon1, lat2, lon2):
@@ -28,6 +22,20 @@ def distance_km(lat1, lon1, lat2, lon2):
     d_lon = math.radians(lon2 - lon1)
     a = math.sin(d_lat / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(d_lon / 2) ** 2
     return 2 * radius * math.asin(math.sqrt(a))
+
+
+def speed_limit_from_travel_speed(step):
+    # OSRM gives no speed limit, but its travel speed per road reflects one:
+    # town streets run near 37 km/h, open roads near 60, motorways near 90
+    if not step.get("duration"):
+        return 30
+
+    kmh = step["distance"] / step["duration"] * 3.6
+    if kmh < 50:
+        return 30
+    if kmh < 80:
+        return 60
+    return 70
 
 
 def road_class_from_ref(ref):
@@ -110,6 +118,10 @@ def split_into_segments(route):
 
         step = _main_step(step_ranges, along[start], along[i])
         road_class = road_class_from_ref(step.get("ref"))
+        speed_limit = speed_limit_from_travel_speed(step)
+
+        # UK law only allows 70 mph off motorways on dual carriageways
+        road_type = 3 if speed_limit == 70 else ROAD_TYPE_BY_CLASS[road_class]
 
         segments.append({
             "start_lat": points[start][0],
@@ -121,7 +133,8 @@ def split_into_segments(route):
             "length_km": round(along[i] - along[start], 2),
             "road_name": _road_name(step),
             "first_road_class": road_class,
-            **ROAD_DEFAULTS[road_class],
+            "road_type": road_type,
+            "speed_limit": speed_limit,
         })
 
         start = i
