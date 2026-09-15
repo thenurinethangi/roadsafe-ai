@@ -27,7 +27,7 @@ FOG_CODES = {45, 48}
 CLEAR_CODES = {0, 1, 2, 3}
 
 SUMMARY_WORDS = {
-    FINE: "Dry",
+    FINE: "Fine",
     RAIN: "Rain",
     SNOW: "Snow",
     FINE_WIND: "High winds",
