@@ -31,6 +31,14 @@ NUMERIC_COLS: List[str] = [
     "grid_risk",          # historical severity index from grid
 ]
 
+# Categories with fewer than 300 rows in collisions_clean.parquet.
+# Fixed here instead of counted at run time: the backend scores one row at a
+# time, where every value would look rare.
+RARE_CATEGORIES = {
+    "weather_conditions": [6],   # Snowing + high winds, 234 rows
+}
+
+
 def extract_datetime_features(df: pd.DataFrame) -> pd.DataFrame:
     """1. Date/time extraction"""
     df = df.copy()
@@ -119,14 +127,12 @@ def create_grid_cell(df: pd.DataFrame, precision: int = 2) -> pd.DataFrame:
 def group_rare_categories(
     df: pd.DataFrame,
     col: str,
-    min_count: int = 500,
+    rare_codes: List[int],
     other_label: int | str = 99
 ) -> pd.DataFrame:
     """7. Grouping rare categories"""
     df = df.copy()
-    counts = df[col].value_counts()
-    rare = counts[counts < min_count].index
-    df[col] = df[col].where(~df[col].isin(rare), other_label)
+    df[col] = df[col].where(~df[col].isin(rare_codes), other_label)
     return df
 
 
@@ -142,10 +148,9 @@ def build_features(df: pd.DataFrame, grid_risk: pd.DataFrame | None = None) -> p
     df = create_speed_x_roadtype(df)
     df = create_grid_cell(df)
 
-    # Group rare categories on a few columns
-    for col in ["junction_detail", "weather_conditions", "road_type"]:
+    for col, rare_codes in RARE_CATEGORIES.items():
         if col in df.columns:
-            df = group_rare_categories(df, col, min_count=300)
+            df = group_rare_categories(df, col, rare_codes)
 
     # Attach historical grid risk if provided
     if grid_risk is not None and "grid_cell" in df.columns:
