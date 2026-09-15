@@ -23,12 +23,14 @@ CATEGORICAL_COLS: List[str] = [
     "first_road_class",
 ]
 
+# grid_risk is not a model feature: a cell's severity index includes the
+# collision being predicted, which leaks the target. The grid table is still
+# built in notebook 03 for the map and scoring.
 NUMERIC_COLS: List[str] = [
     "hour",
     "month",
     "day_of_year",
     "speed_limit",
-    "grid_risk",          # historical severity index from grid
 ]
 
 # Categories with fewer than 300 rows in collisions_clean.parquet.
@@ -136,7 +138,7 @@ def group_rare_categories(
     return df
 
 
-def build_features(df: pd.DataFrame, grid_risk: pd.DataFrame | None = None) -> pd.DataFrame:
+def build_features(df: pd.DataFrame) -> pd.DataFrame:
     """
     Master function — called by both training and the prediction service.
     Order matters.
@@ -151,19 +153,6 @@ def build_features(df: pd.DataFrame, grid_risk: pd.DataFrame | None = None) -> p
     for col, rare_codes in RARE_CATEGORIES.items():
         if col in df.columns:
             df = group_rare_categories(df, col, rare_codes)
-
-    # Attach historical grid risk if provided
-    if grid_risk is not None and "grid_cell" in df.columns:
-        df = df.merge(
-            grid_risk[["grid_cell", "severity_index", "total_collisions"]],
-            on="grid_cell",
-            how="left"
-        )
-        df["grid_risk"] = df["severity_index"].fillna(df["severity_index"].median())
-        df["grid_total"] = df["total_collisions"].fillna(0)
-    else:
-        df["grid_risk"] = 0.0
-        df["grid_total"] = 0
 
     return df
 
