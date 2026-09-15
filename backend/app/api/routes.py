@@ -1,12 +1,24 @@
 """
 All API endpoints.
 """
+import json
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import text
+from sqlalchemy.orm import Session
 
-from app.db.session import engine
-from app.models.schemas import HealthResponse
+from app.config import settings
+from app.db.models import HotspotCluster
+from app.db.session import engine, get_db
+from app.errors import PredictionUnavailable
+from app.models.schemas import (
+    HealthResponse,
+    HotspotZone,
+    InsightsResponse,
+    JourneyRequest,
+    JourneyResponse,
+)
+from app.services.journey import analyse_journey
 from app.services.prediction import prediction_service
 
 # prefix="/api" is applied to every route below
@@ -34,3 +46,48 @@ def health():
         model_version=prediction_service.model_version,
         detail=prediction_service.load_error,
     )
+
+
+@router.post("/journey/analyze", response_model=JourneyResponse)
+def analyze_journey(request: JourneyRequest, db: Session = Depends(get_db)):
+    return analyse_journey(request, db)
+
+
+@router.get("/hotspots", response_model=list[HotspotZone])
+def hotspots(
+    lat_min: float | None = None,
+    lat_max: float | None = None,
+    lon_min: float | None = None,
+    lon_max: float | None = None,
+    db: Session = Depends(get_db),
+):
+    query = db.query(HotspotCluster)
+
+    if lat_min is not None:
+        query = query.filter(HotspotCluster.centre_lat >= lat_min)
+    if lat_max is not None:
+        query = query.filter(HotspotCluster.centre_lat <= lat_max)
+    if lon_min is not None:
+        query = query.filter(HotspotCluster.centre_lon >= lon_min)
+    if lon_max is not None:
+        query = query.filter(HotspotCluster.centre_lon <= lon_max)
+
+    return query.order_by(HotspotCluster.severe_rate.desc()).all()
+
+
+@router.get("/insights/summary", response_model=InsightsResponse)
+def insights_summary():
+    path = settings.MODEL_DIR / "insights.json"
+    if not path.exists():
+        raise HTTPException(status_code=503, detail="insights.json missing - run scripts.build_insights")
+
+    return json.loads(path.read_text())
+
+
+@router.get("/model/metrics")
+def model_metrics():
+    path = settings.MODEL_DIR / "metrics.json"
+    if not path.exists():
+        raise PredictionUnavailable("metrics.json not found - model not trained yet")
+
+    return json.loads(path.read_text())
