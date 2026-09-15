@@ -15,6 +15,8 @@ COLLISIONS_FILE = RAW_DIR / "collisions_last_5_years.csv"
 DATA_GUIDE_FILE = RAW_DIR / "dft-road-casualty-statistics-road-safety-open-dataset-data-guide-2025.xlsx"
 
 CLEAN_FILE = PROCESSED_DIR / "collisions_clean.parquet"
+FEATURES_FILE = PROCESSED_DIR / "collisions_features.parquet"
+GRID_RISK_FILE = PROCESSED_DIR / "grid_risk.parquet"
 
 # The column the model must learn to predict.
 TARGET = "collision_severity"
