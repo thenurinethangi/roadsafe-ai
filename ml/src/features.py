@@ -118,8 +118,9 @@ def create_speed_x_roadtype(df: pd.DataFrame) -> pd.DataFrame:
 def create_grid_cell(df: pd.DataFrame, precision: int = 2) -> pd.DataFrame:
     """6. Geographic aggregation — ~1 km cells"""
     df = df.copy()
-    df["lat_bin"] = df["latitude"].round(precision)
-    df["lon_bin"] = df["longitude"].round(precision)
+    # + 0.0 turns -0.0 into 0.0, so cells on the Greenwich meridian are not split in two
+    df["lat_bin"] = df["latitude"].round(precision) + 0.0
+    df["lon_bin"] = df["longitude"].round(precision) + 0.0
     df["grid_cell"] = (
         df["lat_bin"].astype(str) + "_" + df["lon_bin"].astype(str)
     )
