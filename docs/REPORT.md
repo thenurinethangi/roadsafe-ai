@@ -303,3 +303,25 @@ Rows now in the "unknown" category (99):
 | road_surface_conditions | 10,230 |
 
 The cleaned data is saved as `ml/data/processed/collisions_clean.parquet`.
+
+---
+
+## Known Limitations of Route Scoring
+
+These were found while testing real journeys through the API.
+
+- **Road names can be slightly off.** Road names come from OSRM, which can
+  keep one name for a long stretch of the same road number. For example, on
+  Manchester to Sheffield the last segment is in Sheffield city centre but is
+  labelled "A57 Snake Road". Scores are not affected, because each segment's
+  speed limit is worked out from that segment alone.
+- **Speed limits are estimated.** OSRM does not give speed limits. They are
+  estimated from how fast OSRM expects traffic to move on each segment: under
+  50 km/h is treated as 30 mph, under 80 km/h as 60 mph, and faster as 70 mph.
+  40 mph and 50 mph roads cannot be told apart from these.
+- **Often only one route.** The free OSRM server frequently returns a single
+  route, even when alternatives are requested, so route comparison is not
+  always possible.
+- **Weather forecasts only reach about 16 days ahead.** For later journeys
+  the score uses the most common conditions for that month in our data, and
+  the response says so.
