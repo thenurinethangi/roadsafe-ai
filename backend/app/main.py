@@ -7,8 +7,12 @@ create the app, load the model once at startup, and connect the pieces.
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy import text
 
 from app.api.routes import router
+from app.config import settings
+from app.db.session import engine
 from app.errors import register_error_handlers
 from app.services.prediction import prediction_service
 
@@ -28,6 +32,13 @@ async def lifespan(app: FastAPI):
     else:
         print(f"Model NOT loaded: {prediction_service.load_error}")
 
+    # The first database connection is slow to set up, so pay that at startup too
+    try:
+        with engine.connect() as connection:
+            connection.execute(text("SELECT 1"))
+    except Exception:
+        print("Database NOT reachable at startup")
+
     yield
 
 
@@ -36,6 +47,14 @@ app = FastAPI(
     description="Route safety scoring built on UK STATS19 collision data.",
     version="0.1.0",
     lifespan=lifespan,
+)
+
+# The frontend runs on a different port, so the browser needs our permission
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.CORS_ORIGINS,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 register_error_handlers(app)
