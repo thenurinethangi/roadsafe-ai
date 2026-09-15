@@ -31,7 +31,7 @@ def seed_grid(db):
         db.add(GridCell(
             lat_bin=row.lat_bin,
             lon_bin=row.lon_bin,
-            total_collisions=int(row.total),
+            total_collisions=int(row.total_collisions),
             fatal_count=int(row.fatal),
             serious_count=int(row.serious),
             slight_count=int(row.slight),
