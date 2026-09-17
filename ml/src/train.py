@@ -42,6 +42,10 @@ CLASS_ORDER = [1, 2, 3]
 CLASS_NAMES = [config.SEVERITY_LABELS[c] for c in CLASS_ORDER]
 CHOSEN_MODEL = "logreg-v1"
 
+# The backend scores whole road sections, which always pass junctions, so it has
+# no junction_detail to give. Training on it would break every live prediction.
+SERVING_UNAVAILABLE = ["junction_detail"]
+
 
 def prepare_feature_table() -> pd.DataFrame:
     """
@@ -76,6 +80,7 @@ def prepare_feature_table() -> pd.DataFrame:
 
 def xy_from_features(df: pd.DataFrame):
     cat_cols, num_cols = get_feature_columns()
+    cat_cols = [c for c in cat_cols if c not in SERVING_UNAVAILABLE]
     feature_columns = cat_cols + num_cols
     missing = [c for c in feature_columns + [config.TARGET] if c not in df.columns]
     if missing:

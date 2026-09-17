@@ -1,282 +1,282 @@
 [
   {
     "feature": "cat__road_type_6",
-    "coef_fatal": 0.38243777881119856,
-    "coef_serious": -0.03344434010840604,
-    "coef_slight": -0.3489934387027914,
-    "ksi_weight": 1.0469803161083755
+    "coef_fatal": 0.39674779758986717,
+    "coef_serious": -0.023721334685850966,
+    "coef_slight": -0.3730264629040146,
+    "ksi_weight": 1.1190793887120454
   },
   {
     "feature": "cat__weather_conditions_4",
-    "coef_fatal": 0.35034336461120924,
-    "coef_serious": -0.025927159683861046,
-    "coef_slight": -0.3244162049273469,
-    "ksi_weight": 0.973248614782042
+    "coef_fatal": 0.3526918871243282,
+    "coef_serious": -0.024643250800856904,
+    "coef_slight": -0.32804863632347064,
+    "ksi_weight": 0.9841459089704125
   },
   {
     "feature": "num__speed_limit",
-    "coef_fatal": 0.3004238652301774,
-    "coef_serious": -0.10127842016434936,
-    "coef_slight": -0.19914544506582676,
-    "ksi_weight": 0.5974363351974815
+    "coef_fatal": 0.32652317776962647,
+    "coef_serious": -0.11188186766238155,
+    "coef_slight": -0.21464131010724297,
+    "ksi_weight": 0.6439239303217309
   },
   {
     "feature": "cat__road_surface_conditions_2",
-    "coef_fatal": 0.23693593720000564,
-    "coef_serious": -0.03903747973671774,
-    "coef_slight": -0.1978984574632872,
-    "ksi_weight": 0.5936953723898623
-  },
-  {
-    "feature": "cat__road_surface_conditions_1",
-    "coef_fatal": 0.20947774492169904,
-    "coef_serious": -0.030880497861751153,
-    "coef_slight": -0.1785972470599459,
-    "ksi_weight": 0.5357917411798397
+    "coef_fatal": 0.24168278047733047,
+    "coef_serious": -0.03949765335351341,
+    "coef_slight": -0.20218512712381698,
+    "ksi_weight": 0.606555381371451
   },
   {
     "feature": "cat__road_type_3",
-    "coef_fatal": 0.23073154769585136,
-    "coef_serious": -0.06088370130713481,
-    "coef_slight": -0.1698478463887185,
-    "ksi_weight": 0.5095435391661536
+    "coef_fatal": 0.24956089247155774,
+    "coef_serious": -0.05379087386066102,
+    "coef_slight": -0.19577001861089818,
+    "ksi_weight": 0.5873100558326931
   },
   {
-    "feature": "cat__time_of_day_night",
-    "coef_fatal": 0.1756508158965284,
-    "coef_serious": -0.020551261541790197,
-    "coef_slight": -0.15509955435473718,
-    "ksi_weight": 0.4652986630642126
+    "feature": "cat__road_surface_conditions_1",
+    "coef_fatal": 0.2064207808518166,
+    "coef_serious": -0.028294989453188087,
+    "coef_slight": -0.17812579139863027,
+    "ksi_weight": 0.534377374195889
   },
   {
     "feature": "cat__time_of_day_early_morning",
-    "coef_fatal": 0.22626316088702986,
-    "coef_serious": -0.0736322303247266,
-    "coef_slight": -0.15263093056230045,
-    "ksi_weight": 0.4578927916869041
+    "coef_fatal": 0.25147211757473165,
+    "coef_serious": -0.08588183907999827,
+    "coef_slight": -0.16559027849473168,
+    "ksi_weight": 0.49677083548419676
+  },
+  {
+    "feature": "cat__time_of_day_night",
+    "coef_fatal": 0.17798920479470762,
+    "coef_serious": -0.021576473489120205,
+    "coef_slight": -0.15641273130558656,
+    "ksi_weight": 0.4692381939167605
   },
   {
     "feature": "cat__light_conditions_5",
-    "coef_fatal": 0.14783678859660132,
-    "coef_serious": -0.0057790128688929516,
-    "coef_slight": -0.14205777572770817,
-    "ksi_weight": 0.42617332718312473
-  },
-  {
-    "feature": "cat__junction_detail_0",
-    "coef_fatal": 0.22472093039590077,
-    "coef_serious": -0.0858962990493163,
-    "coef_slight": -0.13882463134658454,
-    "ksi_weight": 0.41647389403975354
+    "coef_fatal": 0.14962756229687024,
+    "coef_serious": -0.005320661693273824,
+    "coef_slight": -0.14430690060359627,
+    "ksi_weight": 0.432920701810789
   },
   {
     "feature": "cat__weather_conditions_1",
-    "coef_fatal": 0.15105539863169853,
-    "coef_serious": -0.021749443600780464,
-    "coef_slight": -0.12930595503091905,
-    "ksi_weight": 0.38791786509275616
+    "coef_fatal": 0.15331181440736943,
+    "coef_serious": -0.022423822064866636,
+    "coef_slight": -0.13088799234250237,
+    "ksi_weight": 0.3926639770275075
   },
   {
     "feature": "cat__first_road_class_4",
-    "coef_fatal": 0.10507987971503886,
-    "coef_serious": 0.01702423155402368,
-    "coef_slight": -0.12210411126906251,
-    "ksi_weight": 0.36631233380718753
+    "coef_fatal": 0.10378790588581542,
+    "coef_serious": 0.017104995309671706,
+    "coef_slight": -0.12089290119548624,
+    "ksi_weight": 0.3626787035864596
   },
   {
     "feature": "cat__first_road_class_3",
-    "coef_fatal": 0.1486500063646747,
-    "coef_serious": -0.04538746339971157,
-    "coef_slight": -0.10326254296496307,
-    "ksi_weight": 0.3097876288948893
-  },
-  {
-    "feature": "cat__junction_detail_19",
-    "coef_fatal": 0.0701499555124253,
-    "coef_serious": 0.0013426989997619358,
-    "coef_slight": -0.07149265451218687,
-    "ksi_weight": 0.21447796353656096
+    "coef_fatal": 0.1435054575071686,
+    "coef_serious": -0.044230772499793,
+    "coef_slight": -0.09927468500737328,
+    "ksi_weight": 0.29782405502212217
   },
   {
     "feature": "cat__weather_conditions_5",
-    "coef_fatal": 0.09680795167278808,
-    "coef_serious": -0.027082142768692793,
-    "coef_slight": -0.06972580890409523,
-    "ksi_weight": 0.20917742671228573
-  },
-  {
-    "feature": "cat__junction_detail_18",
-    "coef_fatal": 0.10221219257218975,
-    "coef_serious": -0.05328868762165906,
-    "coef_slight": -0.048923504950530716,
-    "ksi_weight": 0.14677051485159212
+    "coef_fatal": 0.10125812800955325,
+    "coef_serious": -0.029129540156717305,
+    "coef_slight": -0.0721285878528352,
+    "ksi_weight": 0.21638576355850636
   },
   {
     "feature": "num__month",
-    "coef_fatal": 0.03749354840315027,
-    "coef_serious": -6.115770970822636e-05,
-    "coef_slight": -0.03743239069344127,
-    "ksi_weight": 0.11229717208032458
-  },
-  {
-    "feature": "cat__time_of_day_evening",
-    "coef_fatal": 0.04006952217935298,
-    "coef_serious": -0.00767917622317706,
-    "coef_slight": -0.032390345956176056,
-    "ksi_weight": 0.09717103786852804
+    "coef_fatal": 0.043544844994507496,
+    "coef_serious": -0.0017627366685676554,
+    "coef_slight": -0.04178210832594126,
+    "ksi_weight": 0.12534632497782236
   },
   {
     "feature": "cat__road_type_2",
-    "coef_fatal": 0.013786618274605299,
-    "coef_serious": 0.014504896787374218,
-    "coef_slight": -0.028291515061979477,
-    "ksi_weight": 0.08487454518593847
+    "coef_fatal": 0.014751203343681126,
+    "coef_serious": 0.026012158816495812,
+    "coef_slight": -0.04076336216017744,
+    "ksi_weight": 0.12229008648053181
   },
   {
     "feature": "cat__road_surface_conditions_5",
-    "coef_fatal": 0.03539122468481116,
-    "coef_serious": -0.008472356387802579,
-    "coef_slight": -0.0269188682970086,
-    "ksi_weight": 0.08075660489102579
+    "coef_fatal": 0.05219713324469512,
+    "coef_serious": -0.01346673273519082,
+    "coef_slight": -0.03873040050950419,
+    "ksi_weight": 0.11619120152851267
   },
   {
     "feature": "cat__urban_or_rural_area_2",
-    "coef_fatal": 0.02164808762086856,
-    "coef_serious": -0.0014103426705687641,
-    "coef_slight": -0.02023774495029885,
-    "ksi_weight": 0.060713234850897496
+    "coef_fatal": 0.05050457316679255,
+    "coef_serious": -0.01462917638446695,
+    "coef_slight": -0.03587539678232541,
+    "ksi_weight": 0.1076261903469764
   },
   {
-    "feature": "cat__junction_detail_13",
-    "coef_fatal": -0.000663860448952024,
-    "coef_serious": 0.009836455654238501,
-    "coef_slight": -0.009172595205286726,
-    "ksi_weight": 0.02751778561585993
-  },
-  {
-    "feature": "cat__first_road_class_6",
-    "coef_fatal": -0.09317661103012144,
-    "coef_serious": 0.10176985106915139,
-    "coef_slight": -0.008593240039031313,
-    "ksi_weight": 0.025779720117092564
+    "feature": "cat__time_of_day_evening",
+    "coef_fatal": 0.040770464303143086,
+    "coef_serious": -0.008546175523180067,
+    "coef_slight": -0.03222428877996165,
+    "ksi_weight": 0.09667286633988632
   },
   {
     "feature": "cat__light_conditions_6",
-    "coef_fatal": -0.043290566299345155,
-    "coef_serious": 0.046289074118724224,
-    "coef_slight": -0.002998507819379173,
-    "ksi_weight": 0.008995523458137415
+    "coef_fatal": -0.020938036171437826,
+    "coef_serious": 0.03592365567182639,
+    "coef_slight": -0.014985619500389097,
+    "ksi_weight": 0.04495685850116676
+  },
+  {
+    "feature": "cat__first_road_class_6",
+    "coef_fatal": -0.08620342775088717,
+    "coef_serious": 0.0988839040895185,
+    "coef_slight": -0.012680476338632365,
+    "ksi_weight": 0.038041429015896064
   },
   {
     "feature": "cat__weather_conditions_7",
-    "coef_fatal": 0.044346796762124364,
-    "coef_serious": -0.04676271477020625,
-    "coef_slight": 0.0024159180080818516,
-    "ksi_weight": -0.007247754024245587
+    "coef_fatal": 0.04795204790469399,
+    "coef_serious": -0.05016085560584346,
+    "coef_slight": 0.0022088077011494134,
+    "ksi_weight": -0.006626423103448305
   },
   {
     "feature": "cat__light_conditions_4",
-    "coef_fatal": -0.015390820950061876,
-    "coef_serious": 0.011108018818870231,
-    "coef_slight": 0.004282802131191709,
-    "ksi_weight": -0.012848406393575063
-  },
-  {
-    "feature": "num__day_of_year",
-    "coef_fatal": -0.02566664180692943,
-    "coef_serious": 0.0030194073687039914,
-    "coef_slight": 0.022647234438223172,
-    "ksi_weight": -0.06794170331467178
+    "coef_fatal": -0.020213167300230806,
+    "coef_serious": 0.01312441154637733,
+    "coef_slight": 0.007088755753853061,
+    "ksi_weight": -0.0212662672615596
   },
   {
     "feature": "cat__adverse_conditions_1",
-    "coef_fatal": -0.04962178037566859,
-    "coef_serious": 0.021987420375356375,
-    "coef_slight": 0.027634360000312084,
-    "ksi_weight": -0.08290308000093638
-  },
-  {
-    "feature": "cat__junction_detail_16",
-    "coef_fatal": -0.047759986694152906,
-    "coef_serious": 0.01756009511901814,
-    "coef_slight": 0.030199891575134825,
-    "ksi_weight": -0.09059967472540441
+    "coef_fatal": -0.03522201566481036,
+    "coef_serious": 0.015142590324286036,
+    "coef_slight": 0.020079425340523722,
+    "ksi_weight": -0.06023827602157177
   },
   {
     "feature": "cat__is_weekend_1",
-    "coef_fatal": -0.06977427043464887,
-    "coef_serious": 0.03832985253037961,
-    "coef_slight": 0.03144441790426905,
-    "ksi_weight": -0.09433325371280736
+    "coef_fatal": -0.0536041718438945,
+    "coef_serious": 0.030247131364714745,
+    "coef_slight": 0.023357040479178366,
+    "ksi_weight": -0.0700711214375365
+  },
+  {
+    "feature": "num__day_of_year",
+    "coef_fatal": -0.03169925753606247,
+    "coef_serious": 0.004551678364334418,
+    "coef_slight": 0.02714757917172992,
+    "ksi_weight": -0.0814427375151879
   },
   {
     "feature": "num__hour",
-    "coef_fatal": -0.03519793148456939,
-    "coef_serious": 0.0030237252824176887,
-    "coef_slight": 0.032174206202154616,
-    "ksi_weight": -0.09652261860646094
+    "coef_fatal": -0.029925430879862755,
+    "coef_serious": 0.0006613035865994756,
+    "coef_slight": 0.029264127293264077,
+    "ksi_weight": -0.08779238187979144
   },
   {
     "feature": "cat__speed_x_roadtype_1",
-    "coef_fatal": -0.09969619549474038,
-    "coef_serious": 0.06412562473229165,
-    "coef_slight": 0.035570570762448246,
-    "ksi_weight": -0.10671171228734522
+    "coef_fatal": -0.09369386255374551,
+    "coef_serious": 0.060518008154904025,
+    "coef_slight": 0.03317585439884144,
+    "ksi_weight": -0.09952756319652437
   },
   {
     "feature": "cat__road_surface_conditions_3",
-    "coef_fatal": -0.13692183875758862,
-    "coef_serious": 0.0942680227283906,
-    "coef_slight": 0.042653816029197614,
-    "ksi_weight": -0.12796144808759324
+    "coef_fatal": -0.12986609632212576,
+    "coef_serious": 0.09121104683263846,
+    "coef_slight": 0.03865504948948634,
+    "ksi_weight": -0.11596514846845997
   },
   {
     "feature": "cat__road_surface_conditions_4",
-    "coef_fatal": -0.06921825443525763,
-    "coef_serious": 0.011618366004059537,
-    "coef_slight": 0.05759988843119751,
-    "ksi_weight": -0.17279966529359314
-  },
-  {
-    "feature": "cat__first_road_class_5",
-    "coef_fatal": -0.015198604264502294,
-    "coef_serious": -0.04626495564443558,
-    "coef_slight": 0.06146355990893832,
-    "ksi_weight": -0.1843906797268145
+    "coef_fatal": -0.04547723825706644,
+    "coef_serious": 0.004617331202943883,
+    "coef_slight": 0.04085990705412227,
+    "ksi_weight": -0.12257972116236711
   },
   {
     "feature": "cat__first_road_class_2",
-    "coef_fatal": -0.10788961674567088,
-    "coef_serious": 0.03273670229068397,
-    "coef_slight": 0.07515291445498667,
-    "ksi_weight": -0.22545874336496025
+    "coef_fatal": -0.08942344501657729,
+    "coef_serious": 0.025617288876012844,
+    "coef_slight": 0.06380615614056444,
+    "ksi_weight": -0.19141846842169333
+  },
+  {
+    "feature": "cat__first_road_class_5",
+    "coef_fatal": -0.021938563603811228,
+    "coef_serious": -0.044234388199586465,
+    "coef_slight": 0.0661729518033976,
+    "ksi_weight": -0.19851885541019293
   },
   {
     "feature": "cat__weather_conditions_2",
-    "coef_fatal": -0.11579041798488426,
-    "coef_serious": 0.03415974770116767,
-    "coef_slight": 0.08163067028371677,
-    "ksi_weight": -0.24489201085115014
+    "coef_fatal": -0.11371190289380885,
+    "coef_serious": 0.03137745022368149,
+    "coef_slight": 0.08233445267012732,
+    "ksi_weight": -0.247003358010382
   },
   {
     "feature": "cat__weather_conditions_3",
-    "coef_fatal": -0.15617604289577827,
-    "coef_serious": 0.06598330194200622,
-    "coef_slight": 0.09019274095377218,
-    "ksi_weight": -0.27057822286131644
+    "coef_fatal": -0.1518553498750221,
+    "coef_serious": 0.065832651254108,
+    "coef_slight": 0.08602269862091325,
+    "ksi_weight": -0.2580680958627406
   },
   {
     "feature": "cat__road_type_7",
-    "coef_fatal": -0.11988662479417428,
-    "coef_serious": 0.026841223123652364,
-    "coef_slight": 0.09304540167052039,
-    "ksi_weight": -0.27913620501156267
+    "coef_fatal": -0.11390349041771525,
+    "coef_serious": 0.020673769374605383,
+    "coef_slight": 0.09322972104310995,
+    "ksi_weight": -0.2796891631293298
   },
   {
     "feature": "cat__time_of_day_daytime",
-    "coef_fatal": -0.12074223399231117,
-    "coef_serious": 0.02362330347564964,
-    "coef_slight": 0.0971189305166623,
-    "ksi_weight": -0.2913567915499861
+    "coef_fatal": -0.12113440800635016,
+    "coef_serious": 0.02409320648658937,
+    "coef_slight": 0.09704120151976178,
+    "ksi_weight": -0.2911236045592843
+  },
+  {
+    "feature": "cat__speed_x_roadtype_0",
+    "coef_fatal": -0.07286276788091359,
+    "coef_serious": -0.02592803641163414,
+    "coef_slight": 0.09879080429254797,
+    "ksi_weight": -0.29637241287764365
+  },
+  {
+    "feature": "cat__is_weekend_0",
+    "coef_fatal": -0.11295245859076725,
+    "coef_serious": 0.004342840378555123,
+    "coef_slight": 0.10860961821220995,
+    "ksi_weight": -0.325828854636632
+  },
+  {
+    "feature": "cat__adverse_conditions_0",
+    "coef_fatal": -0.1313346147698488,
+    "coef_serious": 0.019447381418984323,
+    "coef_slight": 0.11188723335086515,
+    "ksi_weight": -0.33566170005259477
+  },
+  {
+    "feature": "cat__light_conditions_7",
+    "coef_fatal": -0.02535089597808004,
+    "coef_serious": -0.08697727219371144,
+    "coef_slight": 0.11232816817179186,
+    "ksi_weight": -0.3369845045153752
+  },
+  {
+    "feature": "cat__time_of_day_evening_rush",
+    "coef_fatal": -0.2622953492704757,
+    "coef_serious": 0.09694208159698024,
+    "coef_slight": 0.16535326767349634,
+    "ksi_weight": -0.49605980302048813
   }
 ]
