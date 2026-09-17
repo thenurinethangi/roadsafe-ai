@@ -14,6 +14,7 @@ from app.api.routes import router
 from app.config import settings
 from app.db.session import engine
 from app.errors import register_error_handlers
+from app.services.corridor import collision_history
 from app.services.prediction import prediction_service
 
 
@@ -31,6 +32,12 @@ async def lifespan(app: FastAPI):
         print(f"Model loaded: {prediction_service.model_version}")
     else:
         print(f"Model NOT loaded: {prediction_service.load_error}")
+
+    collision_history.load()
+    if collision_history.is_ready:
+        print(f"Collision history loaded: {len(collision_history.data):,} collisions")
+    else:
+        print(f"Collision history NOT loaded: {collision_history.load_error}")
 
     # The first database connection is slow to set up, so pay that at startup too
     try:

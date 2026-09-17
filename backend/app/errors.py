@@ -20,6 +20,10 @@ class RoutingUnavailable(Exception):
     """OSRM is down, or there is no road route between the two points."""
 
 
+class HistoryUnavailable(Exception):
+    """The collision records are not loaded, so no route history can be built."""
+
+
 def _json(status: int, message: str, detail: str | None = None) -> JSONResponse:
     body = {"error": message}
     if detail:
@@ -38,6 +42,10 @@ def register_error_handlers(app: FastAPI) -> None:
     async def _routing_unavailable(request: Request, exc: RoutingUnavailable):
         # 502: we are the gateway and the upstream service failed
         return _json(502, "Could not find a route between these points", str(exc))
+
+    @app.exception_handler(HistoryUnavailable)
+    async def _history_unavailable(request: Request, exc: HistoryUnavailable):
+        return _json(503, "Collision history unavailable", str(exc))
 
     @app.exception_handler(Exception)
     async def _unexpected(request: Request, exc: Exception):
