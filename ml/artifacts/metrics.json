@@ -1,0 +1,228 @@
+{
+  "chosen_model": "logreg-v1",
+  "selection_reason": "Random Forest and XGBoost are included as a check, not as the served model. Logistic Regression is the production choice because its coefficients can be turned into readable reasons for each segment, class_weight='balanced' lifts recall on Fatal/Serious, and the backend already scores from those coefficients.",
+  "feature_columns": [
+    "time_of_day",
+    "is_weekend",
+    "road_type",
+    "light_conditions",
+    "weather_conditions",
+    "road_surface_conditions",
+    "urban_or_rural_area",
+    "adverse_conditions",
+    "speed_x_roadtype",
+    "first_road_class",
+    "hour",
+    "month",
+    "day_of_year",
+    "speed_limit"
+  ],
+  "class_labels": [
+    "Fatal",
+    "Serious",
+    "Slight"
+  ],
+  "best_C": 0.1,
+  "C_sweep": {
+    "Cs": [
+      0.1,
+      1.0,
+      10.0
+    ],
+    "mean_macro_f1": [
+      0.3128346051761861,
+      0.3127928831025411,
+      0.31281733408471485
+    ],
+    "best_C": 0.1
+  },
+  "cv_macro_f1_mean": 0.31763506636575384,
+  "cv_macro_f1_std": 0.0011156429044447446,
+  "cv_folds": [
+    0.3192699555160748,
+    0.3166425380342836,
+    0.3165698310970782,
+    0.317027607122609,
+    0.3186654000587236
+  ],
+  "train_macro_f1": 0.3176252036030519,
+  "test_macro_f1": 0.31896492795246606,
+  "accuracy": 0.47639672960872104,
+  "macro_precision": 0.3625793803965509,
+  "macro_recall": 0.4780463775373643,
+  "macro_f1": 0.31896492795246606,
+  "per_class": {
+    "Fatal": {
+      "precision": 0.03528491143202675,
+      "recall": 0.6569536423841059,
+      "f1": 0.06697272481771537,
+      "support": 1510
+    },
+    "Serious": {
+      "precision": 0.24814524676282199,
+      "recall": 0.23055186881876955,
+      "f1": 0.2390252563362777,
+      "support": 23357
+    },
+    "Slight": {
+      "precision": 0.804307982994804,
+      "recall": 0.5466336214092176,
+      "f1": 0.6508968027034052,
+      "support": 77873
+    }
+  },
+  "confusion_matrix": [
+    [
+      992,
+      219,
+      299
+    ],
+    [
+      7914,
+      5385,
+      10058
+    ],
+    [
+      19208,
+      16097,
+      42568
+    ]
+  ],
+  "comparison": [
+    {
+      "model": "dummy",
+      "accuracy": 0.7579618454350788,
+      "macro_precision": 0.2526539484783596,
+      "macro_recall": 0.3333333333333333,
+      "macro_f1": 0.28743962690024155
+    },
+    {
+      "model": "logistic_regression",
+      "accuracy": 0.47639672960872104,
+      "macro_precision": 0.3625793803965509,
+      "macro_recall": 0.4780463775373643,
+      "macro_f1": 0.31896492795246606
+    },
+    {
+      "model": "random_forest",
+      "accuracy": 0.5404029589254429,
+      "macro_precision": 0.36766779391276444,
+      "macro_recall": 0.4670403239158036,
+      "macro_f1": 0.3423800773704199
+    },
+    {
+      "model": "xgboost",
+      "accuracy": 0.4918629550321199,
+      "macro_precision": 0.365211690182308,
+      "macro_recall": 0.4794762195242492,
+      "macro_f1": 0.3268747904305795
+    }
+  ],
+  "top_ksi_coefficients": [
+    {
+      "feature": "cat__road_type_6",
+      "coef_fatal": 0.39674779758986717,
+      "coef_serious": -0.023721334685850966,
+      "coef_slight": -0.3730264629040146,
+      "ksi_weight": 1.1190793887120454
+    },
+    {
+      "feature": "cat__weather_conditions_4",
+      "coef_fatal": 0.3526918871243282,
+      "coef_serious": -0.024643250800856904,
+      "coef_slight": -0.32804863632347064,
+      "ksi_weight": 0.9841459089704125
+    },
+    {
+      "feature": "num__speed_limit",
+      "coef_fatal": 0.32652317776962647,
+      "coef_serious": -0.11188186766238155,
+      "coef_slight": -0.21464131010724297,
+      "ksi_weight": 0.6439239303217309
+    },
+    {
+      "feature": "cat__road_surface_conditions_2",
+      "coef_fatal": 0.24168278047733047,
+      "coef_serious": -0.03949765335351341,
+      "coef_slight": -0.20218512712381698,
+      "ksi_weight": 0.606555381371451
+    },
+    {
+      "feature": "cat__road_type_3",
+      "coef_fatal": 0.24956089247155774,
+      "coef_serious": -0.05379087386066102,
+      "coef_slight": -0.19577001861089818,
+      "ksi_weight": 0.5873100558326931
+    },
+    {
+      "feature": "cat__road_surface_conditions_1",
+      "coef_fatal": 0.2064207808518166,
+      "coef_serious": -0.028294989453188087,
+      "coef_slight": -0.17812579139863027,
+      "ksi_weight": 0.534377374195889
+    },
+    {
+      "feature": "cat__time_of_day_early_morning",
+      "coef_fatal": 0.25147211757473165,
+      "coef_serious": -0.08588183907999827,
+      "coef_slight": -0.16559027849473168,
+      "ksi_weight": 0.49677083548419676
+    },
+    {
+      "feature": "cat__time_of_day_night",
+      "coef_fatal": 0.17798920479470762,
+      "coef_serious": -0.021576473489120205,
+      "coef_slight": -0.15641273130558656,
+      "ksi_weight": 0.4692381939167605
+    },
+    {
+      "feature": "cat__light_conditions_5",
+      "coef_fatal": 0.14962756229687024,
+      "coef_serious": -0.005320661693273824,
+      "coef_slight": -0.14430690060359627,
+      "ksi_weight": 0.432920701810789
+    },
+    {
+      "feature": "cat__weather_conditions_1",
+      "coef_fatal": 0.15331181440736943,
+      "coef_serious": -0.022423822064866636,
+      "coef_slight": -0.13088799234250237,
+      "ksi_weight": 0.3926639770275075
+    },
+    {
+      "feature": "cat__first_road_class_4",
+      "coef_fatal": 0.10378790588581542,
+      "coef_serious": 0.017104995309671706,
+      "coef_slight": -0.12089290119548624,
+      "ksi_weight": 0.3626787035864596
+    },
+    {
+      "feature": "cat__first_road_class_3",
+      "coef_fatal": 0.1435054575071686,
+      "coef_serious": -0.044230772499793,
+      "coef_slight": -0.09927468500737328,
+      "ksi_weight": 0.29782405502212217
+    },
+    {
+      "feature": "cat__weather_conditions_5",
+      "coef_fatal": 0.10125812800955325,
+      "coef_serious": -0.029129540156717305,
+      "coef_slight": -0.0721285878528352,
+      "ksi_weight": 0.21638576355850636
+    },
+    {
+      "feature": "num__month",
+      "coef_fatal": 0.043544844994507496,
+      "coef_serious": -0.0017627366685676554,
+      "coef_slight": -0.04178210832594126,
+      "ksi_weight": 0.12534632497782236
+    },
+    {
+      "feature": "cat__road_type_2",
+      "coef_fatal": 0.014751203343681126,
+      "coef_serious": 0.026012158816495812,
+      "coef_slight": -0.04076336216017744,
+      "ksi_weight": 0.12229008648053181
+    }
+  ]
+}
