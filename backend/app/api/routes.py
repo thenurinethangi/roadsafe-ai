@@ -17,7 +17,10 @@ from app.models.schemas import (
     InsightsResponse,
     JourneyRequest,
     JourneyResponse,
+    RouteHistoryRequest,
+    RouteHistoryResponse,
 )
+from app.services.corridor import collision_history
 from app.services.journey import analyse_journey
 from app.services.prediction import prediction_service
 
@@ -51,6 +54,11 @@ def health():
 @router.post("/journey/analyze", response_model=JourneyResponse)
 def analyze_journey(request: JourneyRequest, db: Session = Depends(get_db)):
     return analyse_journey(request, db)
+
+
+@router.post("/journey/history", response_model=RouteHistoryResponse)
+def route_history(request: RouteHistoryRequest):
+    return collision_history.for_route(request.geometry)
 
 
 @router.get("/hotspots", response_model=list[HotspotZone])

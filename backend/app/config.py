@@ -16,6 +16,7 @@ class Settings(BaseSettings):
     WEATHER_BASE_URL: str = "https://api.open-meteo.com/v1/forecast"
 
     MODEL_DIR: Path = Path("../ml/artifacts")
+    COLLISIONS_FILE: Path = Path("../ml/data/processed/collisions_clean.parquet")
 
     # The Next.js frontend
     CORS_ORIGINS: list[str] = ["http://localhost:3000"]

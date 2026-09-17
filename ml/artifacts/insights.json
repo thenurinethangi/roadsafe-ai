@@ -192,5 +192,666 @@
       "serious_pct": 16.9,
       "slight_pct": 82.06
     }
+  ],
+  "severity_totals": {
+    "fatal": 7550,
+    "serious": 116787,
+    "slight": 389361
+  },
+  "collisions_by_month": [
+    {
+      "month": "2021-01",
+      "collisions": 5567,
+      "severe": 1168,
+      "fatal": 88
+    },
+    {
+      "month": "2021-02",
+      "collisions": 5250,
+      "severe": 1073,
+      "fatal": 56
+    },
+    {
+      "month": "2021-03",
+      "collisions": 6823,
+      "severe": 1475,
+      "fatal": 84
+    },
+    {
+      "month": "2021-04",
+      "collisions": 8460,
+      "severe": 1857,
+      "fatal": 110
+    },
+    {
+      "month": "2021-05",
+      "collisions": 9118,
+      "severe": 1960,
+      "fatal": 116
+    },
+    {
+      "month": "2021-06",
+      "collisions": 9621,
+      "severe": 2270,
+      "fatal": 116
+    },
+    {
+      "month": "2021-07",
+      "collisions": 9607,
+      "severe": 2298,
+      "fatal": 166
+    },
+    {
+      "month": "2021-08",
+      "collisions": 8724,
+      "severe": 2091,
+      "fatal": 148
+    },
+    {
+      "month": "2021-09",
+      "collisions": 9868,
+      "severe": 2285,
+      "fatal": 144
+    },
+    {
+      "month": "2021-10",
+      "collisions": 9709,
+      "severe": 2191,
+      "fatal": 163
+    },
+    {
+      "month": "2021-11",
+      "collisions": 9972,
+      "severe": 2265,
+      "fatal": 138
+    },
+    {
+      "month": "2021-12",
+      "collisions": 8340,
+      "severe": 1817,
+      "fatal": 143
+    },
+    {
+      "month": "2022-01",
+      "collisions": 9027,
+      "severe": 2022,
+      "fatal": 151
+    },
+    {
+      "month": "2022-02",
+      "collisions": 7677,
+      "severe": 1737,
+      "fatal": 113
+    },
+    {
+      "month": "2022-03",
+      "collisions": 8823,
+      "severe": 2039,
+      "fatal": 135
+    },
+    {
+      "month": "2022-04",
+      "collisions": 7933,
+      "severe": 1919,
+      "fatal": 128
+    },
+    {
+      "month": "2022-05",
+      "collisions": 9174,
+      "severe": 2177,
+      "fatal": 123
+    },
+    {
+      "month": "2022-06",
+      "collisions": 9345,
+      "severe": 2177,
+      "fatal": 131
+    },
+    {
+      "month": "2022-07",
+      "collisions": 9166,
+      "severe": 2305,
+      "fatal": 146
+    },
+    {
+      "month": "2022-08",
+      "collisions": 8938,
+      "severe": 2230,
+      "fatal": 152
+    },
+    {
+      "month": "2022-09",
+      "collisions": 8773,
+      "severe": 2077,
+      "fatal": 122
+    },
+    {
+      "month": "2022-10",
+      "collisions": 9334,
+      "severe": 2186,
+      "fatal": 128
+    },
+    {
+      "month": "2022-11",
+      "collisions": 9587,
+      "severe": 2207,
+      "fatal": 135
+    },
+    {
+      "month": "2022-12",
+      "collisions": 8203,
+      "severe": 1852,
+      "fatal": 137
+    },
+    {
+      "month": "2023-01",
+      "collisions": 8752,
+      "severe": 1945,
+      "fatal": 120
+    },
+    {
+      "month": "2023-02",
+      "collisions": 7558,
+      "severe": 1720,
+      "fatal": 96
+    },
+    {
+      "month": "2023-03",
+      "collisions": 8182,
+      "severe": 1778,
+      "fatal": 104
+    },
+    {
+      "month": "2023-04",
+      "collisions": 7749,
+      "severe": 1826,
+      "fatal": 104
+    },
+    {
+      "month": "2023-05",
+      "collisions": 9073,
+      "severe": 2255,
+      "fatal": 146
+    },
+    {
+      "month": "2023-06",
+      "collisions": 9748,
+      "severe": 2404,
+      "fatal": 132
+    },
+    {
+      "month": "2023-07",
+      "collisions": 9159,
+      "severe": 2286,
+      "fatal": 126
+    },
+    {
+      "month": "2023-08",
+      "collisions": 8417,
+      "severe": 2148,
+      "fatal": 147
+    },
+    {
+      "month": "2023-09",
+      "collisions": 9017,
+      "severe": 2274,
+      "fatal": 146
+    },
+    {
+      "month": "2023-10",
+      "collisions": 9142,
+      "severe": 2166,
+      "fatal": 121
+    },
+    {
+      "month": "2023-11",
+      "collisions": 9160,
+      "severe": 2176,
+      "fatal": 126
+    },
+    {
+      "month": "2023-12",
+      "collisions": 8287,
+      "severe": 1978,
+      "fatal": 154
+    },
+    {
+      "month": "2024-01",
+      "collisions": 8300,
+      "severe": 1973,
+      "fatal": 128
+    },
+    {
+      "month": "2024-02",
+      "collisions": 7537,
+      "severe": 1780,
+      "fatal": 97
+    },
+    {
+      "month": "2024-03",
+      "collisions": 7813,
+      "severe": 1864,
+      "fatal": 117
+    },
+    {
+      "month": "2024-04",
+      "collisions": 7646,
+      "severe": 1906,
+      "fatal": 119
+    },
+    {
+      "month": "2024-05",
+      "collisions": 8982,
+      "severe": 2277,
+      "fatal": 121
+    },
+    {
+      "month": "2024-06",
+      "collisions": 9060,
+      "severe": 2352,
+      "fatal": 137
+    },
+    {
+      "month": "2024-07",
+      "collisions": 8503,
+      "severe": 2171,
+      "fatal": 131
+    },
+    {
+      "month": "2024-08",
+      "collisions": 8190,
+      "severe": 2295,
+      "fatal": 151
+    },
+    {
+      "month": "2024-09",
+      "collisions": 8838,
+      "severe": 2209,
+      "fatal": 112
+    },
+    {
+      "month": "2024-10",
+      "collisions": 9069,
+      "severe": 2170,
+      "fatal": 113
+    },
+    {
+      "month": "2024-11",
+      "collisions": 8918,
+      "severe": 2072,
+      "fatal": 134
+    },
+    {
+      "month": "2024-12",
+      "collisions": 8059,
+      "severe": 1996,
+      "fatal": 142
+    },
+    {
+      "month": "2025-01",
+      "collisions": 8163,
+      "severe": 1966,
+      "fatal": 99
+    },
+    {
+      "month": "2025-02",
+      "collisions": 7155,
+      "severe": 1756,
+      "fatal": 87
+    },
+    {
+      "month": "2025-03",
+      "collisions": 8449,
+      "severe": 2196,
+      "fatal": 128
+    },
+    {
+      "month": "2025-04",
+      "collisions": 8314,
+      "severe": 2246,
+      "fatal": 131
+    },
+    {
+      "month": "2025-05",
+      "collisions": 8848,
+      "severe": 2401,
+      "fatal": 129
+    },
+    {
+      "month": "2025-06",
+      "collisions": 8723,
+      "severe": 2369,
+      "fatal": 117
+    },
+    {
+      "month": "2025-07",
+      "collisions": 8760,
+      "severe": 2317,
+      "fatal": 128
+    },
+    {
+      "month": "2025-08",
+      "collisions": 8316,
+      "severe": 2384,
+      "fatal": 141
+    },
+    {
+      "month": "2025-09",
+      "collisions": 8580,
+      "severe": 2267,
+      "fatal": 114
+    },
+    {
+      "month": "2025-10",
+      "collisions": 8610,
+      "severe": 2222,
+      "fatal": 132
+    },
+    {
+      "month": "2025-11",
+      "collisions": 9180,
+      "severe": 2280,
+      "fatal": 119
+    },
+    {
+      "month": "2025-12",
+      "collisions": 8402,
+      "severe": 2234,
+      "fatal": 128
+    }
+  ],
+  "collisions_by_year": [
+    {
+      "year": 2021,
+      "collisions": 101059,
+      "severe_pct": 22.51
+    },
+    {
+      "year": 2022,
+      "collisions": 105980,
+      "severe_pct": 23.52
+    },
+    {
+      "year": 2023,
+      "collisions": 104244,
+      "severe_pct": 23.94
+    },
+    {
+      "year": 2024,
+      "collisions": 100915,
+      "severe_pct": 24.84
+    },
+    {
+      "year": 2025,
+      "collisions": 101500,
+      "severe_pct": 26.24
+    }
+  ],
+  "day_hour": [
+    [
+      863,
+      583,
+      416,
+      355,
+      353,
+      663,
+      1563,
+      3499,
+      5490,
+      3409,
+      3067,
+      3366,
+      3775,
+      4044,
+      4453,
+      6167,
+      6209,
+      6660,
+      4821,
+      3615,
+      2579,
+      2037,
+      1583,
+      1094
+    ],
+    [
+      668,
+      458,
+      347,
+      294,
+      306,
+      713,
+      1593,
+      3944,
+      6310,
+      3716,
+      3114,
+      3386,
+      3869,
+      4042,
+      4516,
+      6344,
+      6773,
+      7279,
+      5366,
+      3897,
+      2692,
+      2232,
+      1764,
+      1189
+    ],
+    [
+      809,
+      469,
+      341,
+      322,
+      329,
+      670,
+      1647,
+      3918,
+      6304,
+      3662,
+      3214,
+      3440,
+      4033,
+      4094,
+      4551,
+      6668,
+      6716,
+      7295,
+      5818,
+      4016,
+      2784,
+      2266,
+      1919,
+      1369
+    ],
+    [
+      890,
+      546,
+      369,
+      306,
+      295,
+      693,
+      1682,
+      3770,
+      6190,
+      3765,
+      3221,
+      3618,
+      4087,
+      4265,
+      4599,
+      6728,
+      6831,
+      7267,
+      5583,
+      4263,
+      3027,
+      2437,
+      2027,
+      1471
+    ],
+    [
+      986,
+      620,
+      451,
+      406,
+      435,
+      712,
+      1521,
+      3299,
+      5422,
+      3454,
+      3478,
+      4118,
+      4746,
+      5103,
+      5621,
+      7670,
+      7412,
+      7327,
+      6100,
+      4840,
+      3539,
+      2993,
+      2694,
+      2352
+    ],
+    [
+      1813,
+      1393,
+      1019,
+      800,
+      688,
+      669,
+      817,
+      1230,
+      1911,
+      2617,
+      3622,
+      4561,
+      4989,
+      5091,
+      4860,
+      4637,
+      4824,
+      5030,
+      4656,
+      3984,
+      3267,
+      2791,
+      2776,
+      2523
+    ],
+    [
+      2080,
+      1539,
+      1161,
+      941,
+      731,
+      677,
+      738,
+      948,
+      1224,
+      1897,
+      2839,
+      3531,
+      4169,
+      4173,
+      4348,
+      3987,
+      4123,
+      3924,
+      3584,
+      3223,
+      2599,
+      2145,
+      1885,
+      1305
+    ]
+  ],
+  "severity_by_light": [
+    {
+      "label": "Daylight",
+      "collisions": 368141,
+      "fatal_pct": 1.21,
+      "serious_pct": 21.99,
+      "slight_pct": 76.81
+    },
+    {
+      "label": "Dark, street lights on",
+      "collisions": 105822,
+      "fatal_pct": 1.47,
+      "serious_pct": 23.64,
+      "slight_pct": 74.89
+    },
+    {
+      "label": "Dark, unlit",
+      "collisions": 31140,
+      "fatal_pct": 4.55,
+      "serious_pct": 29.71,
+      "slight_pct": 65.74
+    }
+  ],
+  "severity_by_speed_limit": [
+    {
+      "label": "20 mph",
+      "collisions": 88085,
+      "fatal_pct": 0.47,
+      "serious_pct": 19.19,
+      "slight_pct": 80.35
+    },
+    {
+      "label": "30 mph",
+      "collisions": 267282,
+      "fatal_pct": 0.87,
+      "serious_pct": 21.78,
+      "slight_pct": 77.35
+    },
+    {
+      "label": "40 mph",
+      "collisions": 44742,
+      "fatal_pct": 1.79,
+      "serious_pct": 23.89,
+      "slight_pct": 74.32
+    },
+    {
+      "label": "50 mph",
+      "collisions": 22659,
+      "fatal_pct": 2.89,
+      "serious_pct": 25.46,
+      "slight_pct": 71.65
+    },
+    {
+      "label": "60 mph",
+      "collisions": 62680,
+      "fatal_pct": 3.84,
+      "serious_pct": 30.65,
+      "slight_pct": 65.51
+    },
+    {
+      "label": "70 mph",
+      "collisions": 28250,
+      "fatal_pct": 3.37,
+      "serious_pct": 21.25,
+      "slight_pct": 75.38
+    }
+  ],
+  "severity_by_area": [
+    {
+      "label": "Urban",
+      "collisions": 345292,
+      "fatal_pct": 0.8,
+      "serious_pct": 20.88,
+      "slight_pct": 78.31
+    },
+    {
+      "label": "Rural",
+      "collisions": 168406,
+      "fatal_pct": 2.83,
+      "serious_pct": 26.53,
+      "slight_pct": 70.64
+    }
   ]
 }

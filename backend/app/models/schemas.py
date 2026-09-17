@@ -133,6 +133,25 @@ class SeverityShare(BaseModel):
     slight_pct: float
 
 
+class SeverityTotals(BaseModel):
+    fatal: int
+    serious: int
+    slight: int
+
+
+class MonthCount(BaseModel):
+    month: str          # "2021-01"
+    collisions: int
+    severe: int
+    fatal: int = 0
+
+
+class YearSummary(BaseModel):
+    year: int
+    collisions: int
+    severe_pct: float
+
+
 class InsightsResponse(BaseModel):
     """Dashboard chart data, worked out once from the cleaned collisions."""
 
@@ -140,3 +159,65 @@ class InsightsResponse(BaseModel):
     collisions_by_hour: list[HourCount]
     severity_by_weather: list[SeverityShare]
     severity_by_road_type: list[SeverityShare]
+
+    # Added later, so an older insights.json still loads
+    severity_totals: SeverityTotals | None = None
+    collisions_by_month: list[MonthCount] = []
+    collisions_by_year: list[YearSummary] = []
+    day_hour: list[list[int]] = Field(default=[], description="7 rows Monday to Sunday, 24 hours each")
+    severity_by_light: list[SeverityShare] = []
+    severity_by_speed_limit: list[SeverityShare] = []
+    severity_by_area: list[SeverityShare] = []
+
+
+# route history
+
+class RouteHistoryRequest(BaseModel):
+    """Body of POST /api/journey/history."""
+
+    geometry: list[tuple[float, float]] = Field(
+        ...,
+        min_length=2,
+        max_length=50_000,
+        description="[lat, lon] points of one route, as returned by /journey/analyze",
+    )
+
+
+class DayCount(BaseModel):
+    day: str
+    collisions: int
+
+
+class YearCount(BaseModel):
+    year: int
+    collisions: int
+
+
+class AlongRoute(BaseModel):
+    """Collisions counted in equal stretches from the start of the route."""
+
+    bin_km: int
+    collisions: list[int]
+    severe: list[int]
+
+
+class RouteHistoryResponse(BaseModel):
+    """Police-reported collisions close to one route."""
+
+    corridor_m: int
+    first_year: int
+    last_year: int
+    route_km: float
+
+    total_collisions: int
+    fatal: int
+    serious: int
+    severe_pct: float
+    national_severe_pct: float
+
+    by_hour: list[int]
+    by_day: list[DayCount]
+    by_year: list[YearCount]
+    by_light: list[SeverityShare]
+    by_surface: list[SeverityShare]
+    along_route: AlongRoute
