@@ -4,6 +4,7 @@ from datetime import timedelta
 from zoneinfo import ZoneInfo
 
 from app.db.models import PredictionLog
+from app.db.session import SessionLocal
 from app.errors import RoutingUnavailable
 from app.services import scoring
 from app.services.prediction import prediction_service
@@ -16,7 +17,7 @@ CONDITION_KEYS = ["weather_conditions", "road_surface_conditions", "light_condit
 logger = logging.getLogger(__name__)
 
 
-def analyse_journey(request, db):
+def analyse_journey(request, background_tasks):
     started = time.perf_counter()
     departure = _uk_time(request.departure_time)
 
@@ -44,7 +45,9 @@ def analyse_journey(request, db):
         route["safety_score"] = scoring.route_score(segments)
 
     routes = scoring.label_routes(routes)
-    _log_prediction(request, departure, routes, started, db)
+    elapsed_ms = round((time.perf_counter() - started) * 1000)
+    # Logged after the response is sent, so a slow database never delays the driver
+    background_tasks.add_task(_log_prediction, request, departure, routes, elapsed_ms)
 
     return {
         "weather_summary": summarise(conditions, weather_available),
@@ -93,7 +96,8 @@ def _model_input(segment, point, condition):
     }
 
 
-def _log_prediction(request, departure, routes, started, db):
+def _log_prediction(request, departure, routes, elapsed_ms):
+    db = SessionLocal()
     try:
         db.add(PredictionLog(
             from_lat=request.from_lat,
@@ -103,7 +107,7 @@ def _log_prediction(request, departure, routes, started, db):
             departure_time=departure.replace(tzinfo=None),
             routes_returned=len(routes),
             best_safety_score=max(route["safety_score"] for route in routes),
-            response_time_ms=round((time.perf_counter() - started) * 1000),
+            response_time_ms=elapsed_ms,
             model_version=prediction_service.model_version or "unknown",
         ))
         db.commit()
@@ -111,3 +115,5 @@ def _log_prediction(request, departure, routes, started, db):
         # Monitoring must never stop the driver getting their result
         db.rollback()
         logger.exception("Could not write prediction log")
+    finally:
+        db.close()
