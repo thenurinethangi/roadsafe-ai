@@ -84,22 +84,23 @@ Frontend (map + route comparison)
 ```
 roadsafe-ai/
 ├── ml/                  <- all model work happens here
-│   ├── data/raw/        <- downloaded CSVs (NOT pushed to git)
-│   ├── data/processed/  <- cleaned data
-│   ├── notebooks/       <- exploration + training notebooks
-│   ├── src/             <- reusable python code
-│   └── artifacts/       <- trained model files (pushed to git)
+│   ├── data/raw/        <- downloaded CSV (NOT pushed to git)
+│   ├── data/processed/  <- files the notebooks create (NOT pushed to git)
+│   ├── notebooks/       <- 01 to 05, run in order
+│   ├── src/             <- reusable python code (features, training)
+│   └── artifacts/       <- trained model and precomputed data (pushed to git)
 │
 ├── backend/             <- FastAPI REST API
-│   └── app/
-│       ├── api/         <- endpoints
-│       ├── services/    <- prediction, routing, weather, scoring
-│       ├── models/      <- request/response shapes
-│       └── db/          <- database code
+│   ├── app/
+│   │   ├── api/         <- endpoints
+│   │   ├── services/    <- prediction, routing, weather, scoring, route history
+│   │   ├── models/      <- request/response shapes
+│   │   └── db/          <- database tables, create and seed scripts
+│   └── scripts/         <- rebuild insights and the score reference
 │
 ├── frontend/            <- Next.js app
 │
-└── docs/                <- report notes, screenshots, diagrams
+└── docs/REPORT.md       <- data quality and limitations
 ```
 
 ---
@@ -118,13 +119,53 @@ wrong and it is very hard to find the bug.
 
 ## Setup
 
-### 1. Database
+You need Python 3.11+, Node.js 20+ and Docker Desktop.
+
+### 1. Download the data
+
+1. Go to https://www.gov.uk/government/statistics/road-safety-data
+2. Download **Road Safety Data - Collisions - last 5 years** (CSV, ~93 MB)
+3. Download the **data guide** file (explains the number codes)
+4. Put both in `ml/data/raw/` and rename the CSV to **`collisions_last_5_years.csv`**
+
+`ml/data/raw/` is in `.gitignore`. The big CSV must not go on GitHub.
+
+### 2. Run the notebooks (creates the data files)
+
+```bash
+cd ml
+pip install -r requirements.txt
+jupyter notebook
+```
+
+Run the notebooks **in order**. Each one saves files the next one needs:
+
+| Notebook | Creates |
+|---|---|
+| `01_data_exploration` | nothing, exploration only |
+| `02_preprocessing` | `data/processed/collisions_clean.parquet` |
+| `03_feature_engineering` | `data/processed/collisions_features.parquet`, `grid_risk.parquet` |
+| `04_model_training` | `artifacts/model.joblib`, `metrics.json` (already in git) |
+| `05_clustering_hotspots` | `data/processed/hotspot_clusters.parquet`, `artifacts/hotspot_kmeans.joblib` |
+
+The backend needs `collisions_clean.parquet` for route history, and the
+database seed needs `grid_risk.parquet` and `hotspot_clusters.parquet`.
+
+### 3. Database
 
 ```bash
 docker compose up -d
 ```
 
-### 2. Backend
+PostgreSQL runs on port **5433**. Then create the tables and load the data
+(from the `backend` folder, after step 4 installs the packages):
+
+```bash
+python -m app.db.init_db
+python -m app.db.seed
+```
+
+### 4. Backend
 
 ```bash
 cd backend
@@ -136,7 +177,17 @@ uvicorn app.main:app --reload
 
 API docs then open at: http://localhost:8000/docs
 
-### 3. Frontend
+No `.env` file is needed for local use. `backend/.env.example` shows the
+settings if your database runs somewhere else.
+
+If you retrain the model, rebuild the files that depend on it:
+
+```bash
+python -m scripts.build_score_reference
+python -m scripts.build_insights
+```
+
+### 5. Frontend
 
 ```bash
 cd frontend
@@ -146,24 +197,8 @@ npm run dev
 
 Opens at: http://localhost:3000
 
-### 4. ML notebooks
-
-```bash
-cd ml
-pip install -r requirements.txt
-jupyter notebook
-```
-
----
-
-## Data download (do this first)
-
-1. Go to https://www.gov.uk/government/statistics/road-safety-data
-2. Download **Road Safety Data - Collisions - last 5 years** (CSV, ~93 MB)
-3. Download the **data guide** file (explains the number codes)
-4. Put both in `ml/data/raw/`
-
-`ml/data/raw/` is in `.gitignore`. The big CSV must not go on GitHub.
+The frontend calls the backend at `http://localhost:8000`. To change it, copy
+`frontend/.env.local.example` to `frontend/.env.local`.
 
 ---
 
