@@ -3,7 +3,7 @@ All API endpoints.
 """
 import json
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
@@ -52,8 +52,8 @@ def health():
 
 
 @router.post("/journey/analyze", response_model=JourneyResponse)
-def analyze_journey(request: JourneyRequest, db: Session = Depends(get_db)):
-    return analyse_journey(request, db)
+def analyze_journey(request: JourneyRequest, background_tasks: BackgroundTasks):
+    return analyse_journey(request, background_tasks)
 
 
 @router.post("/journey/history", response_model=RouteHistoryResponse)
